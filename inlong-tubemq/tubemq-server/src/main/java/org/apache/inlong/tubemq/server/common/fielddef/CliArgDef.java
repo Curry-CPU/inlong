@@ -112,7 +112,62 @@ public enum CliArgDef {
     AUTHTOKEN("token", "auth-token",
             "String: API operation authorization code",
             "API operation authorization code,"
-                    + " required when adding or modifying, optional when querying");
+                    + " required when adding or modifying, optional when querying"),
+    TOPICNAME("name", "topicName", "String:the topic name", ""),
+    BROKERID(null, "brokerId",
+            "String:the id of the broker, its default value is 0. " +
+                    "If brokerId is not zero, it ignores brokerIp field",
+            "the id of the broker, its default value is 0. If brokerId is not zero, it ignores brokerIp field"),
+    DELETEWHEN(null, "deleteWhen",
+            "String:the default deleting time of the topic data. " +
+                    "The format should like cronjob form 0 0 6, 18 * * ?",
+            "the default deleting time of the topic data. The format should like cronjob form 0 0 6, 18 * * ?"),
+    DELETEPOLICY(null, "deletePolicy",
+            "Int:the default policy for deleting, the default policy is \"delete, 168\"",
+            "the default policy for deleting, the default policy is \"delete, 168\""),
+    NUMPARTITIONS(null, "numPartitions",
+            "Int:the default partition number of a default topic on the broker. Default 3",
+            "the default partition number of a default topic on the broker. Default 3"),
+    UNFLUSHTHRESHOLD(null, "unflushThreshold",
+            "Int:the maximum message number which allows in memory. " +
+                    "It has to be flushed to disk if the number exceed this value. Default 1000",
+            "the maximum message number which allows in memory. " +
+                    "It has to be flushed to disk if the number exceed this value. Default 1000"),
+    NUMTOPICSTORES(null, "numTopicStores",
+            "Int:the number of data block and partition group allowed to create, default 1. " +
+                    "If it is larger than 1, the partition number and topic number should be mapping with this value",
+            "the number of data block and partition group allowed to create, default 1. " +
+                    "If it is larger than 1, the partition number and topic number should be mapping with this value"),
+    UNFLUSHINTERVAL(null, "unflushInterval",
+            "Int:the maximum interval for unflush, default 1000ms",
+            "the maximum interval for unflush, default 1000ms"),
+    MEMCACHEMSGCNTINK(null, "memCacheMsgCntInK",
+            "Int:the max cached message package, default is 10, the unit is K",
+            "the max cached message package, default is 10, the unit is K"),
+    MEMCACHEMSGSIZEINMB(null, "memCacheMsgSizeInMB",
+            "Int:the max cache message size in MB, default 3",
+            "the max cache message size in MB, default 3"),
+    MEMCACHEFLUSHINTVL(null, "memCacheFlushIntvl",
+            "Int:the max unflush interval in ms, default 20000",
+            "the max unflush interval in ms, default 20000"),
+    BROKERTLSPORT(null, "brokerTLSPort",
+            "Int:the port of TLS of the broker, it has no default value",
+            "the port of TLS of the broker, it has no default value"),
+    ACCEPTPUBLISH(null, "acceptPublish",
+            "Boolean:whether the broker accept publish, default true",
+            "whether the broker accept publish, default true"),
+    ACCEPTSUBSCRIBE(null, "acceptSubscribe",
+            "Boolean:whether the broker accept subscribe, default true",
+            "whether the broker accept subscribe, default true"),
+    MODIFYUSER(null, "modifyUser",
+            "String:the modifier",
+            "the modifier"),
+    CREATEUSER(null, "createUser",
+            "String:the creator",
+            "the creator"),
+    CONFMODAUTHTOKEN(null, "confModAuthToken",
+            "String:the authorized key for configuration update",
+            "the authorized key for configuration update");
 
     CliArgDef(String opt, String longOpt, String optDesc) {
         this(opt, longOpt, false, "", optDesc);
